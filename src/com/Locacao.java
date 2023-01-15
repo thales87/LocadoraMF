@@ -1,20 +1,20 @@
 package com;
 
 public class Locacao {
-	private Filme _filme;
-	private int _diasAlugados;
+	private Filme filme;
+	private int diasAlugados;
 
 	public Locacao (Filme filme, int diasAlugados) {
-	_filme = filme;
-	_diasAlugados = diasAlugados;
+		this.filme = filme;
+		this.diasAlugados = diasAlugados;
 	}
 
 	public int lerDiasAlugados() {
-		return _diasAlugados;
+		return this.diasAlugados;
 	}
 
 	public Filme lerFilme() {
-		return _filme;
+		return this.filme;
 	}
 	
 	public double custoLocacao() {
