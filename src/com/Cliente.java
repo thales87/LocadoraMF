@@ -22,7 +22,7 @@ public class Cliente {
 	public String conta() {
 		String resultado = "Registro de locação de " + lerNome() + "\n";
 		for (Locacao locacao : locacoes) {
-			resultado += "\t" + locacao.lerFilme().lerTitulo() + "\t" + String.valueOf(locacao.custoLocacao()) + "\n";
+			resultado += "\t" + locacao.lerFilme().lerTitulo() + "\t" + String.valueOf(locacao.calculaPreco()) + "\n";
 		}
 
 		resultado += "O valor devido é " + String.valueOf(calculaDebito()) + "\n";
@@ -33,7 +33,7 @@ public class Cliente {
 	private double calculaDebito() {
 		double resultado = 0;
 		for (Locacao locacao : locacoes) {
-			resultado += locacao.custoLocacao();
+			resultado += locacao.calculaPreco();
 		}
 		return resultado;
 	}

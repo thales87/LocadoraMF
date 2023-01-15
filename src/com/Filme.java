@@ -25,4 +25,33 @@ public class Filme {
 		return this.titulo;
 	}
 
+	public double custoLocacao(int diasAlugados) {
+		double custo = 0;
+
+		switch (lerCodigoPreco()) {
+		case Filme.NORMAL:
+			custo += 2;
+			if (diasAlugados > 2)
+				custo += (diasAlugados - 2) * 1.5;
+			break;
+		case Filme.LANCAMENTO_NOVO:
+			custo += diasAlugados * 3;
+			break;
+		case Filme.INFANTIL:
+			custo += 1.5;
+			if (diasAlugados > 3)
+				custo += (diasAlugados - 3) * 1.5;
+			break;
+		}
+		return custo;
+	}
+
+	public int lerPontosLocadorFrequente(int diasAlugados) {
+		if ((lerCodigoPreco() == Filme.LANCAMENTO_NOVO) && diasAlugados > 1) {
+			return 2;
+		} else {
+			return 1;
+		}
+	}
+
 }
