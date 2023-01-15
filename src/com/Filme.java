@@ -4,21 +4,33 @@ public class Filme {
 
 	public static final int INFANTIL = 2;
 	public static final int NORMAL = 0;
-	public static final int LANCAMENTO_NOVO = 1;
+	public static final int LANCAMENTO = 1;
 	private String titulo;
-	private int codigoPreco;
+	private Preco preco;
 
 	public Filme(String titulo, int codigoPreco) {
 		this.titulo = titulo;
-		this.codigoPreco = codigoPreco;
+		gravarCodigoPreco(codigoPreco);
 	}
 
 	public int lerCodigoPreco() {
-		return this.codigoPreco;
+		return preco.lerCodigoPreco();
 	}
 
 	public void gravarCodigoPreco(int arg) {
-		this.codigoPreco = arg;
+		switch (arg) {
+		case NORMAL:
+			preco = new PrecoNormal();
+			break;
+		case INFANTIL:
+			preco = new PrecoInfantil();
+			break;
+		case LANCAMENTO:
+			preco = new PrecoLancamento();
+			break;
+		default:
+			throw new IllegalArgumentException("Código de Preço Incorreto");
+		}
 	}
 
 	public String lerTitulo() {
@@ -26,32 +38,10 @@ public class Filme {
 	}
 
 	public double custoLocacao(int diasAlugados) {
-		double custo = 0;
-
-		switch (lerCodigoPreco()) {
-		case Filme.NORMAL:
-			custo += 2;
-			if (diasAlugados > 2)
-				custo += (diasAlugados - 2) * 1.5;
-			break;
-		case Filme.LANCAMENTO_NOVO:
-			custo += diasAlugados * 3;
-			break;
-		case Filme.INFANTIL:
-			custo += 1.5;
-			if (diasAlugados > 3)
-				custo += (diasAlugados - 3) * 1.5;
-			break;
-		}
-		return custo;
+		return preco.custoLocacao(diasAlugados);
 	}
-
-	public int lerPontosLocadorFrequente(int diasAlugados) {
-		if ((lerCodigoPreco() == Filme.LANCAMENTO_NOVO) && diasAlugados > 1) {
-			return 2;
-		} else {
-			return 1;
+	
+	public int lerPontosLocadorFrequente (int diasAlugados) {
+		return preco.lerPontosLocadorFrequente (diasAlugados);
 		}
-	}
-
 }

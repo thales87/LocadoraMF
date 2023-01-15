@@ -7,9 +7,9 @@ import com.Locacao;
 public class Teste1 {
 
 	public static void main(String[] args) {
-		Filme oSenhorDoAnel2 = new Filme("O Senhor dos Aneis: As Duas Torres", 0);
-		Filme oSenhorDoAnel3 = new Filme("O Senhor dos Aneis: O Retorno do Rei", 1);
-		Filme frozen = new Filme("Frozen: Só o Branco", 2);
+		Filme oSenhorDoAnel2 = new Filme("O Senhor dos Aneis: As Duas Torres", Filme.NORMAL);
+		Filme oSenhorDoAnel3 = new Filme("O Senhor dos Aneis: O Retorno do Rei", Filme.LANCAMENTO);
+		Filme frozen = new Filme("Frozen: Só o Branco", Filme.INFANTIL);
 		
 		Locacao primeiraLocacaoCliente1 = new Locacao(frozen, 2);
 		Locacao segundaLocacaoCliente1 = new Locacao(oSenhorDoAnel3, 2);
