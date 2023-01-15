@@ -14,11 +14,13 @@ public class Teste1 {
 		
 		Locacao primeiraLocacaoCliente1 = new Locacao(frozen, 2);
 		Locacao segundaLocacaoCliente1 = new Locacao(oSenhorDoAnel3, 1);
+		Locacao terceiraLocacaoCliente1 = new Locacao(oSenhorDoAnel2, 2);
 		
 		Cliente cliente1 = new Cliente("Astolfo");
 		
-		cliente1.adicionarLocação(primeiraLocacaoCliente1);
-		cliente1.adicionarLocação(segundaLocacaoCliente1);
+		cliente1.adicionarLocacao(primeiraLocacaoCliente1);
+		cliente1.adicionarLocacao(segundaLocacaoCliente1);
+		cliente1.adicionarLocacao(terceiraLocacaoCliente1);
 		
 		System.out.println(cliente1.conta());
 	}
