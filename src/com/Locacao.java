@@ -37,4 +37,13 @@ public class Locacao {
 		}
 		return custo;
 	}
+	
+	public int lerPontosLocadorFrequente() {
+		if ((lerFilme().lerCodigoPreco() == Filme.LANCAMENTO_NOVO) && lerDiasAlugados() > 1) {
+			return 2;
+		}else {
+			return 1;
+		}
+			
+	}
 }

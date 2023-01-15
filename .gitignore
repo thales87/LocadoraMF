@@ -1,5 +1,5 @@
 .classpath
 .git
 .project
-.settings
+.settings/
 *.class

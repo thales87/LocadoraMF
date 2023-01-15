@@ -21,23 +21,35 @@ public class Cliente {
 
 	public String conta() {
 		double quantiaTotal = 0;
-		int pontosLocadorFrequente = 0;
 		Enumeration locacoes = _locacoes.elements();
 		String resultado = "Registro de locação de " + lerNome() + "\n";
 		while (locacoes.hasMoreElements()) {
 			Locacao cada = (Locacao) locacoes.nextElement();
-
-			pontosLocadorFrequente++;
-
-			if ((cada.lerFilme().lerCodigoPreco() == Filme.LANCAMENTO_NOVO) && cada.lerDiasAlugados() > 1)
-				pontosLocadorFrequente++;
-			
 			resultado += "\t" + cada.lerFilme().lerTitulo() + "\t" + String.valueOf(cada.custoLocacao()) + "\n";
-			quantiaTotal += cada.custoLocacao();
 		}
 
-		resultado += "O valor devido é " + String.valueOf(quantiaTotal) + "\n";
-		resultado += "Você ganhou " + String.valueOf(pontosLocadorFrequente) + " pontos de locador freqüente";
+		resultado += "O valor devido é " + String.valueOf(calculaDebito()) + "\n";
+		resultado += "Você ganhou " + String.valueOf(calculaPontosLocadorFrequente()) + " pontos de locador freqüente";
+		return resultado;
+	}
+
+	private double calculaDebito() {
+		double resultado = 0;
+		Enumeration locacoes = _locacoes.elements();
+		while (locacoes.hasMoreElements()) {
+			Locacao cada = (Locacao) locacoes.nextElement();
+			resultado += cada.custoLocacao();
+		}
+		return resultado;
+	}
+
+	private int calculaPontosLocadorFrequente() {
+		int resultado = 0;
+		Enumeration locacoes = _locacoes.elements();
+		while (locacoes.hasMoreElements()) {
+			Locacao cada = (Locacao) locacoes.nextElement();
+			resultado += cada.lerPontosLocadorFrequente();
+		}
 		return resultado;
 	}
 }

@@ -13,7 +13,7 @@ public class Teste1 {
 		Filme frozen = new Filme("Frozen: Só o Branco", 2);
 		
 		Locacao primeiraLocacaoCliente1 = new Locacao(frozen, 2);
-		Locacao segundaLocacaoCliente1 = new Locacao(oSenhorDoAnel3, 1);
+		Locacao segundaLocacaoCliente1 = new Locacao(oSenhorDoAnel3, 2);
 		Locacao terceiraLocacaoCliente1 = new Locacao(oSenhorDoAnel2, 2);
 		
 		Cliente cliente1 = new Cliente("Astolfo");
